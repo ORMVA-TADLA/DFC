@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="description" content="Offline data collection app with GPS, photos, and local storage">
+    <title>Data Field Collector</title>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="icon-192.png">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Form View -->
+        <div id="form-view" class="container">
+            <div class="header">
+                <div>
+                    <h1>Data Field Collector</h1>
+                </div>
+                <button id="view-entries-btn" class="btn btn-secondary">
+                    <span class="icon">📘</span>
+                    <span>View (<span id="entry-count">0</span>)</span>
+                </button>
+            </div>
+
+            <!-- Loading Indicator -->
+            <div id="loading-indicator" class="alert alert-info" style="display: none;">
+                <div class="loading-spinner"></div>
+                Processing...
+            </div>
+
+            <!-- Auto-save Indicator -->
+            <div id="autosave-indicator" class="alert alert-success" style="display: none;">
+                <div class="autosave-dot"></div>
+                <span>Draft auto-saved</span>
+                <span id="autosave-time" class="time"></span>
+            </div>
+
+            <!-- Form -->
+            <div class="form-card">
+                <div class="form-group">
+                    <label>Category *</label>
+                    <select id="category" autocomplete="off">
+                        <option value="">Select category</option>
+                        <option value="Inspection">Inspection</option>
+                        <option value="Maintenance">Maintenance</option>
+                        <option value="Incident">Incident</option>
+                        <option value="Survey">Survey</option>
+                        <option value="Delivery">Delivery</option>
+                        <option value="Quality Check">Quality Check</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Status *</label>
+                    <select id="status" autocomplete="off">
+                        <option value="">Select status</option>
+                        <option value="Completed">Completed</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Urgent">Urgent</option>
+                        <option value="On Hold">On Hold</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="description" rows="5"
+                        placeholder="Enter detailed notes, observations, or comments..."></textarea>
+                </div>
+
+                <div class="button-group">
+                    <button id="get-location-btn" class="btn btn-purple">
+                        <span class="icon">📍</span>
+                        <span id="location-text">Get GPS</span>
+                    </button>
+                    <label for="photo-input" class="btn btn-indigo">
+                        <span class="icon">📷</span>
+                        <span>Photos (<span id="photo-count">0</span>)</span>
+                    </label>
+                    <input type="file" id="photo-input" accept="image/*" multiple capture="environment"
+                        style="display: none;">
+                </div>
+
+                <!-- Photo Preview -->
+                <div id="photo-preview" class="photo-preview" style="display: none;">
+                    <div class="preview-header">
+                        <span>Photo Preview (<span id="preview-count">0</span>)</span>
+                        <span id="preview-size" class="preview-size"></span>
+                    </div>
+                    <div id="preview-grid" class="preview-grid"></div>
+                </div>
+
+                <button id="save-entry-btn" class="btn btn-save"  onclick="saveEntry()">
+                    <span class="icon">💾</span>
+                    Save to Database
+                </button>
+            </div>
+
+            <!-- <div class="info-card">
+                <div class="info-icon">💾</div>
+                <div>
+                    <p class="info-title">✨ Enhanced with IndexedDB</p>
+                    <p class="info-text">Stores unlimited photos locally • Works 100% offline • GPS location tracking •
+                        No internet required</p>
+                </div>
+            </div> -->
+        </div>
+
+        <!-- List View -->
+        <div id="list-view" class="container" style="display: none;">
+            <div class="header">
+                <div>
+                    <h1>Saved Entries</h1>
+                    <p class="subtitle">Total: <span id="total-entries">0</span> entries</p>
+                </div>
+                <button id="new-entry-btn" class="btn btn-primary">
+                    <span class="icon">➕</span>
+                    New Entry
+                </button>
+            </div>
+
+            <!-- Storage Info -->
+            <div id="storage-info" class="storage-card">
+                <div class="storage-header">
+                    <span class="icon">💾</span>
+                    <span class="storage-title">Storage Usage</span>
+                </div>
+                <div id="storage-text" class="storage-text"></div>
+                <div class="storage-bar">
+                    <div id="storage-progress" class="storage-progress"></div>
+                </div>
+            </div>
+
+            <!-- Entries List -->
+            <div id="entries-list"></div>
+
+            <!-- Empty State -->
+            <div id="empty-state" class="empty-state" style="display: none;">
+                <div class="empty-icon">💾</div>
+                <p>No entries yet. Create your first entry!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="db.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(reg => console.log('Service Worker registered'))
+                    .catch(err => console.log('Service Worker registration failed:', err));
+            });
+        }
+    </script>
+</body>
+
+</html>
