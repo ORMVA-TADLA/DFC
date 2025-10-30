@@ -13,3 +13,8 @@ Offline data collection app with GPS location tracking, photo capture, and Index
 ✅ **Installable** - Install as standalone app
 
 ## Files Structure
+
+## todo
+Fix sharing with pictures
+Fix location accuracy
+Improve UI
