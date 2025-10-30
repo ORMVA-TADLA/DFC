@@ -1,6 +1,6 @@
 {
-    "name": "Data Collector",
-    "short_name": "DataCollect",
+    "name": "Data Field Collector",
+    "short_name": "DataFieldCollect",
     "description": "Offline data collection app with GPS, photos, and local storage",
     "start_url": "./index.html",
     "display": "standalone",
