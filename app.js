@@ -759,10 +759,10 @@ function createEntryHeader(entry) {
             </div>
             <div class="entry-actions">
                 <button class="btn btn-share" onclick="shareEntry(${entry.id})" title="Share entry" aria-label="Share entry">
-                    <span class="icon">🔗</span>
+                    <img src="assets/share.png" alt="Share" height="24" width="24">
                 </button>
                 <button class="btn btn-delete" onclick="deleteEntry(${entry.id})" title="Delete entry" aria-label="Delete entry">
-                    <span class="icon">🗑️</span>
+                    <img src="assets/trash.png" alt="Delete" height="24" width="24">
                 </button>
             </div>
         </div>
