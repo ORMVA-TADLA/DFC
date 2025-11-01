@@ -107,6 +107,15 @@ h1 {
 	background: #4f46e5;
 }
 
+.btn-grey {
+	background: #e9e9ed;
+	color: #444;
+	flex: 1;
+	margin-bottom: 0;
+	font-size: 1rem;
+	font-weight: 600;
+}
+
 .btn-save {
 	background: linear-gradient(135deg, #10b981 0%, #059669 100%);
 	color: white;
@@ -120,7 +129,6 @@ h1 {
 }
 
 .btn-share {
-	background: #10b981;
 	color: white;
 	padding: 0.625rem;
 	border-radius: 8px;
@@ -131,7 +139,6 @@ h1 {
 }
 
 .btn-delete {
-	background: #ef4444;
 	color: white;
 	padding: 0.625rem;
 	border-radius: 8px;
@@ -216,6 +223,27 @@ h1 {
 
 .form-group {
 	margin-bottom: 1.25rem;
+}
+
+.form-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1rem;
+	margin-bottom: 1.25rem;
+}
+
+.form-grid-item {
+	width: 100%;
+}
+
+.form-grid-item input {
+	width: 100%;
+	padding: 0.75rem 1rem;
+	border: 2px solid #d1d5db;
+	border-radius: 8px;
+	font-size: 1rem;
+	transition: border-color 0.2s;
+	font-family: inherit;
 }
 
 label {
@@ -610,14 +638,5 @@ textarea {
 
 	.photos-grid {
 		grid-template-columns: repeat(2, 1fr);
-	}
-
-	.entry-header {
-		flex-direction: column;
-	}
-
-	.entry-actions {
-		width: 100%;
-		justify-content: flex-end;
 	}
 }
