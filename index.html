@@ -48,43 +48,73 @@
             <!-- Form -->
             <div class="form-card">
                 <div class="form-group">
-                    <label>Category *</label>
-                    <select id="category" autocomplete="off">
-                        <option value="">Select category</option>
-                        <option value="Inspection">Inspection</option>
-                        <option value="Maintenance">Maintenance</option>
-                        <option value="Incident">Incident</option>
-                        <option value="Survey">Survey</option>
-                        <option value="Delivery">Delivery</option>
-                        <option value="Quality Check">Quality Check</option>
-                        <option value="Other">Other</option>
+                    <label>Secondaire *</label>
+                    <select id="secondaire" autocomplete="off">
+                        <option value="">Select Secondaire</option>
+                        <option value="SG8">SG8</option>
+                        <option value="SG8A">SG8A</option>
+                        <option value="SG8B">SG8B</option>
+                        <option value="SG9">SG9</option>
+                        <option value="SG9A">SG9A</option>
+                        <option value="SG9B">SG9B</option>
+                        <option value="SG10">SG10</option>
+                        <option value="SG10A">SG10A</option>
+                        <option value="SG10B">SG10B</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label>Status *</label>
-                    <select id="status" autocomplete="off">
-                        <option value="">Select status</option>
-                        <option value="Completed">Completed</option>
-                        <option value="In Progress">In Progress</option>
-                        <option value="Pending">Pending</option>
-                        <option value="Urgent">Urgent</option>
-                        <option value="On Hold">On Hold</option>
+                    <label>Tertiaire *</label>
+                    <select id="tertiaire" autocomplete="off">
+                        <option value="">Select Tertiaire</option>
+                        <option value="TG1">TG1</option>
+                        <option value="TG2">TG2</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label>Description</label>
-                    <textarea id="description" rows="5"
-                        placeholder="Enter detailed notes, observations, or comments..."></textarea>
+                    <label>2eme Tertiaire (optionaly)</label>
+                    <select id="tertiaire_2" autocomplete="off">
+                        <option value="">Select 2eme Tertiaire</option>
+                        <option value="TG1">TG1</option>
+                        <option value="TG2">TG2</option>
+                    </select>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-grid-item">
+                        <label>Elements to change</label>
+                        <input type="number" id="elementsChange" value="0" step="1" min="0">
+                    </div>
+
+                    <div class="form-grid-item">
+                        <label>Bagues to change</label>
+                        <input type="number" id="baguesChange" value="0" step="1" min="0">
+                    </div>
+
+                    <div class="form-grid-item">
+                        <label>Supports to change</label>
+                        <input type="number" id="supportsChange" value="0" step="1" min="0">
+                    </div>
+
+                    <div class="form-grid-item">
+                        <label>Remise en place</label>
+                        <input type="number" id="remise" value="0" step="1" min="0">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Observation</label>
+                    <textarea id="observation" rows="3"
+                        placeholder="Enter detailed observations, or comments..."></textarea>
                 </div>
 
                 <div class="button-group">
-                    <button id="get-location-btn" class="btn btn-purple">
+                    <button id="get-location-btn" class="btn btn-grey">
                         <span class="icon">📍</span>
                         <span id="location-text">Get GPS</span>
                     </button>
-                    <label for="photo-input" class="btn btn-indigo">
+                    <label for="photo-input" class="btn btn-grey">
                         <span class="icon">📷</span>
                         <span>Photos (<span id="photo-count">0</span>)</span>
                     </label>
@@ -101,7 +131,7 @@
                     <div id="preview-grid" class="preview-grid"></div>
                 </div>
 
-                <button id="save-entry-btn" class="btn btn-save"  onclick="saveEntry()">
+                <button id="save-entry-btn" class="btn btn-save" onclick="saveEntry()">
                     <span class="icon">💾</span>
                     Save to Database
                 </button>
